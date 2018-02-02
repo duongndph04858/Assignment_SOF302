@@ -9,27 +9,29 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import model.interfaces.User_Service;
 import util.HibernateUtil;
 
 @Entity
-@Component("user_ser")
+@Component("users")
 @Table(name = "USERS")
-public class USERS implements User_Service {
+public class USERS {
 	@Id
 	@Column(name = "Username")
 	private String Username;
 	@Column(name = "Password")
 	private String Password;
+	// @Autowired
+	// @Qualifier("util")
+	// @Transient
+	// HibernateUtil util;
 	@Autowired
-	@Qualifier("util")
-	@Transient
-	HibernateUtil util;
+	SessionFactory factory;
 
 	public USERS() {
 		// TODO Auto-generated constructor stub
@@ -58,34 +60,30 @@ public class USERS implements User_Service {
 		Password = password;
 	}
 
-	@Override
 	public USERS getUser(String username) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public void deleteUser(USERS user) {
 		// TODO Auto-generated method stub
 
 	}
 
-	@Override
 	public void addUser(USERS user) {
 		// TODO Auto-generated method stub
 
 	}
 
-	@Override
 	public void changePassword(USERS user) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@SuppressWarnings("unchecked")
-	@Override
 	public boolean checkLogin(String username, String password) {
-		Session session = util.getSessionFactory().openSession();
+		// Session session = util.getSessionFactory().openSession();
+		Session session = factory.openSession();
 		Transaction tr = null;
 		ArrayList<USERS> lstTk = null;
 		try {

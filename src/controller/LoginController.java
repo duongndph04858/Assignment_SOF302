@@ -11,13 +11,13 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import model.model.USER;
+import model.model.USER_Service;
 
 @Controller
 @RequestMapping("/login")
 public class LoginController {
 	@Autowired @Qualifier("user")
-	private USER user;
+	private USER_Service user;
 	@RequestMapping()
 	public String login(HttpServletRequest request) {
 		Random rd = new Random();
@@ -33,10 +33,9 @@ public class LoginController {
 
 	@RequestMapping(params = "verify")
 	public String verify(ModelMap md, @RequestParam("username") String username, @RequestParam("password") String password) {
-		System.out.println(username);
 		if (user.checkLogin(username, password)==true) {
 			md.addAttribute("mss", "Đăng nhập thành công");
-			return "home";
+			return "redirect:/home";
 		} else {
 			if (username.isEmpty()) {
 				md.addAttribute("user-err", "Tên đăng nhập không được bỏ trống!");

@@ -1,7 +1,3 @@
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import controller.test1;
 import model.entity.USERS;
 
 public class test {

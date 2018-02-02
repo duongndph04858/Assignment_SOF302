@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 public class HibernateUtil {
 	private SessionFactory sessionFactory;
 
+	@SuppressWarnings("deprecation")
 	public SessionFactory getSessionFactory() {
 		try {
 			sessionFactory = new Configuration().configure().buildSessionFactory();

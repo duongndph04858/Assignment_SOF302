@@ -9,9 +9,9 @@
 <body>
 	<div id="tool">
 		<select>
-			<option name="Phòng IT">Phòng IT</option>
-			<option name="Phòng Nhân sự">Phòng Nhân sự</option>
-			<option name="Phòng Kế toán">Phòng Kế toán</option>
+			<option value="Phòng IT"></option>
+			<option value="Phòng Nhân sự"></option>
+			<option value="Phòng Kế toán"></option>
 		</select>
 		<form action="">
 			<button>Thêm nhân viên</button>
