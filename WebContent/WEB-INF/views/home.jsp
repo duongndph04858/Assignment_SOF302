@@ -7,20 +7,20 @@
 <title>Trang chủ</title>
 <link type="text/css" rel="stylesheet" href="css/style.css">
 </head>
-<body>
-	<div style="width: 100%; height: 100%">
-		<jsp:include page="parten/sample.jsp"></jsp:include>
+<body style="width: 100%; height: 100%">
+	<div>
+		<jsp:include page="parten/menu.jsp"></jsp:include>
 		<div id="right">
 			<div id="tool">
 				<h3>Top 10 nhân viên xuất sắc nhất tháng</h3>
 			</div>
 			<hr>
 			<div id="content">
-				<table border="1px solid #fff">
+				<table border="1px solid #000">
 					<tr>
 						<td>STT</td>
-						<td>Họ và tên</td>
 						<td>Ảnh</td>
+						<td>Họ và tên</td>						
 						<td>Giới tính</td>
 						<td>Ngày sinh</td>
 						<td>Chức vụ</td>

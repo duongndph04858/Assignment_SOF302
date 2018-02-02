@@ -75,7 +75,7 @@ body {
 		<div id="login-form">
 			<form action="login.htm" method="post">
 				<div>
-					<label>Tài khoản:</label> <input type="text" name="user">
+					<label>Tài khoản:</label> <input type="text" name="username">
 				</div><br>
 				<div>
 					<label>Mật khẩu :</label> <input type="password" name="password">

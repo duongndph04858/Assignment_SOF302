@@ -4,14 +4,20 @@ import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import model.model.USER;
+
 @Controller
 @RequestMapping("/login")
 public class LoginController {
+	@Autowired @Qualifier("user")
+	private USER user;
 	@RequestMapping()
 	public String login(HttpServletRequest request) {
 		Random rd = new Random();
@@ -26,12 +32,13 @@ public class LoginController {
 	}
 
 	@RequestMapping(params = "verify")
-	public String verify(ModelMap md, @RequestParam("user") String user, @RequestParam("password") String password) {
-		if (user.equals("abc") && password.equals("123")) {
+	public String verify(ModelMap md, @RequestParam("username") String username, @RequestParam("password") String password) {
+		System.out.println(username);
+		if (user.checkLogin(username, password)==true) {
 			md.addAttribute("mss", "Đăng nhập thành công");
 			return "home";
 		} else {
-			if (user.isEmpty()) {
+			if (username.isEmpty()) {
 				md.addAttribute("user-err", "Tên đăng nhập không được bỏ trống!");
 			}
 			if (password.isEmpty()) {
