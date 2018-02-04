@@ -68,6 +68,29 @@
 #nv:hover #sub-menu {
 	display: block;
 }
+
+#sub-menuPb {
+	padding: 0;
+	display: none;
+}
+
+#sub-menuPb li a {
+	background: none;
+	color: #fff;
+	font-size: 17px;
+}
+
+#sub-menuPb li a:hover {
+	color: #000;
+	background: -webkit-linear-gradient(top, #eee 0%, #bbb 100%);
+	background: -webkit-linear-gradient(to bottom, #eee 0%, #bbb 100%);
+	font-size: 17px;
+}
+
+#pb:hover #sub-menuPb {
+	display: block;
+}
+
 </style>
 </head>
 <body>
@@ -88,7 +111,13 @@
 						<li><a href="#">Danh sách kỷ luật</a></li>
 					</ul></li>
 				<li><a href="#">Chấm Công</a></li>
-				<li><a href="#">Phòng ban</a></li>
+				<li id="pb"><a href="#">Phòng ban</a>
+					<ul id="sub-menuPb">
+						<li><a href="#">Phòng Giám Đốc</a></li>
+						<li><a href="#">Phòng IT</a></li>
+						<li><a href="#">Phòng Kế Toán</a></li>
+						<li><a href="#">Phòng Nhân Sự</a></li>
+					</ul></li>
 				<li><a href="home.htm">Tài nguyên</a></li>
 				<li><a href="login.htm">Cài đặt</a></li>
 			</ul>

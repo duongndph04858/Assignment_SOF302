@@ -16,7 +16,7 @@
 			</div>
 			<hr>
 			<div id="content">
-				<table border="1px solid #000">
+				<!-- <table border="1px solid #000">
 					<tr>
 						<td>STT</td>
 						<td>Ảnh</td>
@@ -47,7 +47,8 @@
 						<td>duongndph04858@fpt.edu.vn</td>
 						<td>Giám đốc</td>
 					</tr>
-				</table>
+				</table> -->
+				<jsp:include page="parten/bangnv.jsp"></jsp:include>
 			</div>
 		</div>
 	</div>
