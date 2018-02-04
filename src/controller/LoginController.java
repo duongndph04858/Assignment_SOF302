@@ -1,7 +1,5 @@
 package controller;
 
-import java.util.Random;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,12 +14,12 @@ import model.model.USER_Service;
 @Controller
 @RequestMapping("/login")
 public class LoginController {
-	@Autowired @Qualifier("user")
+	@Autowired
+	@Qualifier("user")
 	private USER_Service user;
+
 	@RequestMapping()
 	public String login(HttpServletRequest request) {
-		Random rd = new Random();
-		request.setAttribute("stt", rd.nextInt(10));
 		return "login/login";
 	}
 
@@ -32,19 +30,16 @@ public class LoginController {
 	}
 
 	@RequestMapping(params = "verify")
-	public String verify(ModelMap md, @RequestParam("username") String username, @RequestParam("password") String password) {
-		if (user.checkLogin(username, password)==true) {
-			md.addAttribute("mss", "Đăng nhập thành công");
-			return "redirect:/home";
+	public String verify(ModelMap md, @RequestParam("username") String username,
+			@RequestParam("password") String password) {
+		if (user.checkLogin(username, password) == true) {
+			md.addAttribute("mss", "Đăng nhập thành công!");
+			return "redirect:/home.htm";
 		} else {
-			if (username.isEmpty()) {
-				md.addAttribute("user-err", "Tên đăng nhập không được bỏ trống!");
-			}
-			if (password.isEmpty()) {
-				md.addAttribute("password-err", "Mật khẩu không được bỏ trống!");
-			}
+			md.addAttribute("mss", "Đăng nhập thất bại!");
 			return "login/login";
 		}
 
 	}
+	
 }
