@@ -44,7 +44,7 @@ table {
 					</form>
 				</td>
 				<td></td>
-				<td>Nguyễn Trà My</td>
+				<td><a>Nguyễn Trà My</a></td>
 				<td>Nữ</td>
 				<td>21/10/1998</td>
 				<td>Giám Đốc</td>

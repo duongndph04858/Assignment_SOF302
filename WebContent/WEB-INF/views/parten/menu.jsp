@@ -4,93 +4,19 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link type="text/css" rel="stylesheet" href="css/menu.css">
+<script src="js/jquery-3.3.1.js"></script>
 <style type="text/css">
 #left {
 	width: 18%;
-	height: 580px;
+	height: 635px;
 	float: left;
 	text-align: right;
-	background: url("images/1899.png") no-repeat;
+	background: url("images/1899.png ") no-repeat;
 	box-shadow: 4px 4px 7px #000;
-	padding-bottom: 50px;
+	padding: 100px 0px 50px 0px;
 	background-size: cover;
 }
-
-#logo {
-	padding-top: 100px;
-	text-align: center;
-	height: 100px;
-}
-
-#menu li {
-	line-height: 35px;
-	margin-bottom: 5px;
-	list-style: none;
-}
-
-#menu li a {
-	padding-right: 15px;
-	border-radius: 5px;
-	font-weight: bold;
-	text-decoration: none;
-	font-size: 20px;
-	color: #fff;
-	display: block;
-	background: -webkit-linear-gradient(top, #690 0%, #090 100%);
-	background: -webkit-linear-gradient(to bottom, #690 0%, #090 100%);
-}
-
-#menu li a:hover {
-	cursor: pointer;
-	color: #000;
-	background: -webkit-linear-gradient(top, #6f0 0%, #0f0 100%);
-	background: -webkit-linear-gradient(to bottom, #6f0 0%, #0f0 100%);
-}
-
-#sub-menu {
-	padding: 0;
-	display: none;
-}
-
-#sub-menu li a {
-	background: none;
-	color: #fff;
-	font-size: 17px;
-}
-
-#sub-menu li a:hover {
-	color: #000;
-	background: -webkit-linear-gradient(top, #eee 0%, #bbb 100%);
-	background: -webkit-linear-gradient(to bottom, #eee 0%, #bbb 100%);
-	font-size: 17px;
-}
-
-#nv:hover #sub-menu {
-	display: block;
-}
-
-#sub-menuPb {
-	padding: 0;
-	display: none;
-}
-
-#sub-menuPb li a {
-	background: none;
-	color: #fff;
-	font-size: 17px;
-}
-
-#sub-menuPb li a:hover {
-	color: #000;
-	background: -webkit-linear-gradient(top, #eee 0%, #bbb 100%);
-	background: -webkit-linear-gradient(to bottom, #eee 0%, #bbb 100%);
-	font-size: 17px;
-}
-
-#pb:hover #sub-menuPb {
-	display: block;
-}
-
 </style>
 </head>
 <body>
@@ -101,28 +27,55 @@
 		</div>
 		<div id="menu">
 			<ul>
-				<li><a href="#">Trang chủ</a></li>
-				<li><a href="#">Thông báo</a></li>
-				<li id="nv"><a href="#">Nhân viên</a>
-					<ul id="sub-menu">
-						<li><a href="home.htm">Danh sách nhân viên</a></li>
-						<li><a href="#">Danh sách đi công tác</a></li>
-						<li><a href="#">Danh sách khen thưởng</a></li>
-						<li><a href="#">Danh sách kỷ luật</a></li>
+				<li class="mn"><a href="#">Trang chủ</a></li>
+				<li class="mn"><a href="#">Thông báo</a></li>
+				<li id="nv" class="mn"><a href="#">Nhân viên</a>
+					<ul class="sub-menu">
+						<li class="smn"><a href="home.htm">Danh sách nhân viên</a></li>
+						<li class="smn"><a href="#">Danh sách đi công tác</a></li>
+						<li class="smn"><a href="#">Danh sách khen thưởng</a></li>
+						<li class="smn"><a href="#">Danh sách kỷ luật</a></li>
 					</ul></li>
-				<li><a href="#">Chấm Công</a></li>
-				<li id="pb"><a href="#">Phòng ban</a>
-					<ul id="sub-menuPb">
-						<li><a href="#">Phòng Giám Đốc</a></li>
-						<li><a href="#">Phòng IT</a></li>
-						<li><a href="#">Phòng Kế Toán</a></li>
-						<li><a href="#">Phòng Nhân Sự</a></li>
+				<li class="mn"><a href="#">Chấm Công</a></li>
+				<li id="pb" class="mn"><a href="#">Phòng ban</a>
+					<ul class="sub-menu">
+						<li class="smn"><a href="#">Phòng Giám Đốc</a></li>
+						<li class="smn"><a href="#">Phòng IT</a></li>
+						<li class="smn"><a href="#">Phòng Kế Toán</a></li>
+						<li class="smn"><a href="#">Phòng Nhân Sự</a></li>
 					</ul></li>
-				<li><a href="home.htm">Tài nguyên</a></li>
-				<li><a href="login.htm">Cài đặt</a></li>
+				<li class="mn"><a href="#">Tài nguyên</a></li>
+				<li class="mn"><a href="login.htm">Cài đặt</a></li>
 			</ul>
 		</div>
 	</div>
+	<script type="text/javascript">
+		$(function() {
+			$('li.mn').children('a').click(function() {
+				$('li.mn').children('a').removeClass();
+				$(this).addClass('current');
+			});
+		});
 
+		$(function() {
+			$('li.smn').children('a').click(function() {
+				$('li.mn').children('a').removeClass();
+				$('li.smn').children('a').removeClass();
+				$(this).addClass('subitems');
+			});
+		});
+
+		var menu = document.querySelectorAll('#menu > ul > li');
+		for (var i = 0; i < menu.length; i++) {
+			menu[i].addEventListener("click", function() {
+				var menuList = document
+						.querySelectorAll('#menu > ul > li > ul');
+				for (var j = 0; j < menuList.length; j++) {
+					menuList[j].style.display = "none";
+				}
+				this.children[1].style.display = "block";
+			});
+		}
+	</script>
 </body>
 </html>
