@@ -15,7 +15,7 @@
 				<h3>Top 10 nhân viên xuất sắc nhất tháng</h3>
 			</div>
 			<hr>
-			<div id="content">
+			<div >
 				<!-- <table border="1px solid #000">
 					<tr>
 						<td>STT</td>
@@ -48,7 +48,6 @@
 						<td>Giám đốc</td>
 					</tr>
 				</table> -->
-				<jsp:include page="parten/bangnv.jsp"></jsp:include>
 			</div>
 		</div>
 	</div>

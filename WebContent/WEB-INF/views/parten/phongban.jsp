@@ -4,15 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Phòng ban</title>
+<title>${dp}</title>
 <link type="text/css" rel="stylesheet" href="css/style.css">
 </head>
 <body style="width: 100%; height: 100%">
 <div>
 <jsp:include page="menu.jsp"></jsp:include>
-<div id="right">
-<jsp:include page="tool.jsp"></jsp:include>
-<jsp:include page="bangnv.jsp"></jsp:include>
+<div>
+<jsp:include page="right.jsp"></jsp:include>
 </div>
 </div>
 </body>

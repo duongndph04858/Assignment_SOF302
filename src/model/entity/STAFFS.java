@@ -17,125 +17,138 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class STAFFS {
 	@Id
 	@Column(name = "Username")
-	private String Username;
+	private String username;
 	@Column(name = "Name")
-	private String Name;
+	private String name;
 	@Column(name = "Gender")
-	private Boolean Gender;
+	private Boolean gender;
 	@Column(name = "Birthday")
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "MM/DD/YYYY")
-	private Date Birthday;
+	private Date birthday;
 	@Column(name = "Photo")
-	private String Photo;
+	private String photo;
 	@Column(name = "Email")
-	private String Email;
+	private String email;
 	@Column(name = "Phone")
-	private String Phone;
+	private String phone;
 	@Column(name = "Salary")
-	private Long Salary;
-	@Column(name = "Note")
-	private String Note;
-	@Column(name = "DepartId")
-	private String DepartId;
+	private Long salary;
+	@Column(name = "Notes")
+	private String notes;
+	@Column(name = "departId")
+	private String departId;
+	@Column(name = "Level")
+	private String level;
+
+	public STAFFS(String username, String name, Boolean gender, Date birthday, String photo, String email, String phone,
+			Long salary, String notes, String departId, String level) {
+		super();
+		this.username = username;
+		this.name = name;
+		this.gender = gender;
+		this.birthday = birthday;
+		this.photo = photo;
+		this.email = email;
+		this.phone = phone;
+		this.salary = salary;
+		this.notes = notes;
+		this.departId = departId;
+		this.level = level;
+	}
 
 	public STAFFS() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public STAFFS(String username, String name, Boolean gender, Date birthday, String photo, String email, String phone,
-			Long salary, String note, String departId) {
-		super();
-		Username = username;
-		Name = name;
-		Gender = gender;
-		Birthday = birthday;
-		Photo = photo;
-		Email = email;
-		Phone = phone;
-		Salary = salary;
-		Note = note;
-		DepartId = departId;
-	}
-
 	public String getUsername() {
-		return Username;
+		return username;
 	}
 
 	public void setUsername(String username) {
-		Username = username;
+		this.username = username;
 	}
 
 	public String getName() {
-		return Name;
+		return name;
 	}
 
 	public void setName(String name) {
-		Name = name;
+		this.name = name;
 	}
 
 	public Boolean getGender() {
-		return Gender;
+		return gender;
 	}
 
 	public void setGender(Boolean gender) {
-		Gender = gender;
+		this.gender = gender;
 	}
 
 	public Date getBirthday() {
-		return Birthday;
+		return birthday;
 	}
 
 	public void setBirthday(Date birthday) {
-		Birthday = birthday;
+		this.birthday = birthday;
 	}
 
 	public String getPhoto() {
-		return Photo;
+		return photo;
 	}
 
 	public void setPhoto(String photo) {
-		Photo = photo;
+		this.photo = photo;
 	}
 
 	public String getEmail() {
-		return Email;
+		return email;
 	}
 
 	public void setEmail(String email) {
-		Email = email;
+		this.email = email;
 	}
 
 	public String getPhone() {
-		return Phone;
+		return phone;
 	}
 
 	public void setPhone(String phone) {
-		Phone = phone;
+		this.phone = phone;
 	}
 
 	public Long getSalary() {
-		return Salary;
+		return salary;
 	}
 
 	public void setSalary(Long salary) {
-		Salary = salary;
+		this.salary = salary;
 	}
 
-	public String getNote() {
-		return Note;
+	public String getNotes() {
+		return notes;
 	}
 
-	public void setNote(String note) {
-		Note = note;
+	public void setNotes(String notes) {
+		this.notes = notes;
 	}
 
 	public String getDepartId() {
-		return DepartId;
+		return departId;
 	}
 
 	public void setDepartId(String departId) {
-		DepartId = departId;
+		this.departId = departId;
 	}
+
+	public String getLevel() {
+		return level;
+	}
+
+	public void setLevel(String level) {
+		this.level = level;
+	}
+
+	
 
 }

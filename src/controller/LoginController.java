@@ -9,14 +9,14 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import model.model.USER_Service;
+import model.model.USERS_DAO;
 
 @Controller
 @RequestMapping("/login")
 public class LoginController {
 	@Autowired
 	@Qualifier("user")
-	private USER_Service user;
+	private USERS_DAO user;
 
 	@RequestMapping()
 	public String login(HttpServletRequest request) {
@@ -32,7 +32,7 @@ public class LoginController {
 	@RequestMapping(params = "verify")
 	public String verify(ModelMap md, @RequestParam("username") String username,
 			@RequestParam("password") String password) {
-		if (user.checkLogin(username, password) == true) {
+		if (user.checkLogin(username, password)) {
 			md.addAttribute("mss", "Đăng nhập thành công!");
 			return "redirect:/home.htm";
 		} else {
