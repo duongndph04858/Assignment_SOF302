@@ -14,6 +14,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name = "TIMESHEETS")
 public class TIMESHEETS {
 	@Id
+	@Column(name = "Id")
+	private String Id;
 	@Column(name = "Username")
 	private String Username;
 	@Column(name = "Date")

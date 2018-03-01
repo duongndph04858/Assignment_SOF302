@@ -24,7 +24,7 @@ public class STAFFS {
 	private Boolean gender;
 	@Column(name = "Birthday")
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "MM/DD/YYYY")
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date birthday;
 	@Column(name = "Photo")
 	private String photo;
@@ -38,11 +38,11 @@ public class STAFFS {
 	private String notes;
 	@Column(name = "departId")
 	private String departId;
-	@Column(name = "Level")
-	private String level;
+	@Column(name = "LevelId")
+	private int levelId;
 
 	public STAFFS(String username, String name, Boolean gender, Date birthday, String photo, String email, String phone,
-			Long salary, String notes, String departId, String level) {
+			Long salary, String notes, String departId, int levelId) {
 		super();
 		this.username = username;
 		this.name = name;
@@ -54,7 +54,7 @@ public class STAFFS {
 		this.salary = salary;
 		this.notes = notes;
 		this.departId = departId;
-		this.level = level;
+		this.levelId = levelId;
 	}
 
 	public STAFFS() {
@@ -141,12 +141,12 @@ public class STAFFS {
 		this.departId = departId;
 	}
 
-	public String getLevel() {
-		return level;
+	public int getLevelId() {
+		return levelId;
 	}
 
-	public void setLevel(String level) {
-		this.level = level;
+	public void setLevelId(int levelId) {
+		this.levelId = levelId;
 	}
 
 	

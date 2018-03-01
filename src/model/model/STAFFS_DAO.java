@@ -24,7 +24,7 @@ public class STAFFS_DAO {
 	@Transactional
 	public ArrayList<STAFFS> getListStaffs() {
 		Session session = factory.getCurrentSession();
-		String hql = "from STAFFS order by Level";
+		String hql = "from STAFFS order by LevelId";
 		Query query = session.createQuery(hql);
 		ArrayList<STAFFS> listStaffs = (ArrayList<STAFFS>) query.list();
 		return listStaffs;
@@ -34,7 +34,7 @@ public class STAFFS_DAO {
 	@SuppressWarnings("unchecked")
 	public ArrayList<STAFFS> getListStaffByDP(String departID) {
 		Session session = factory.getCurrentSession();
-		String hql = "from STAFFS where DepartId=:departID order by Level";
+		String hql = "from STAFFS where DepartId=:departID order by LevelId";
 		Query query = session.createQuery(hql);
 		query.setParameter("departID", departID);
 		ArrayList<STAFFS> listStaffs = (ArrayList<STAFFS>) query.list();

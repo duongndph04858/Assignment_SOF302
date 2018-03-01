@@ -11,7 +11,7 @@
 <div>
 <jsp:include page="menu.jsp"></jsp:include>
 <div>
-<jsp:include page="right.jsp"></jsp:include>
+<jsp:include page="content.jsp"></jsp:include>
 </div>
 </div>
 </body>

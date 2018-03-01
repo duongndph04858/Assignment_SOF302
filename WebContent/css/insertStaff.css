@@ -1,0 +1,50 @@
+@charset "UTF-8";
+
+h1 {
+	text-align: center;
+	margin-top: 15px;
+}
+
+input {
+	line-height: 25px;
+	margin-bottom: 15px;
+	width: 200px;
+	margin-left: 30px;
+}
+
+.gioitinh {
+	width: 10px;
+}
+
+label {
+	margin-left: 30px;
+	font-weight: bold;
+}
+
+button {
+	font-weight: bold;
+}
+
+#right {
+	width: 81%;
+	height: 635px;
+	float: left;
+	margin-left: 10px;
+	border-bottom: 3px solid #ccc;
+	position: relative;
+}
+
+.preview {
+	margin-left: 30px;
+}
+
+#button {
+	text-align: center;
+}
+img{height: 100px;}
+li{list-style: none;}
+tr{height: 50px;}
+table {
+	width: 700px;
+	margin: auto;
+}
