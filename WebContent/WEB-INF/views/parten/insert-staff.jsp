@@ -27,45 +27,45 @@
 				</tr>
 				<tr>
 					<td><label>Họ Và Tên:</label></td>
-					<td><input type="text"></td>
-					<td></td>
-					<td></td>
+					<td><input name="fullname" type="text"></td>
+					<td><label>Tài khoản:</label></td>
+					<td><input name="username" type="text"></td>
 				</tr>
 				<tr>
 					<td><label>Giới Tính:</label></td>
-					<td><input class="gioitinh" name="gioitinh" type="radio"
+					<td><input class="gioitinh" name="gender" type="radio"
 						checked="checked"><label style="margin: 10px;">Nam</label>
-						<input class="gioitinh" name="gioitinh" type="radio"><label
+						<input class="gioitinh" name="gender" type="radio"><label
 						style="margin: 10px;">Nữ</label></td>
 					<td><label>Ngày Sinh:</label></td>
-					<td><input type="text"></td>
+					<td><input name="dob" type="text"></td>
 				</tr>
 				<tr>
 					<td><label>Cấp độ:</label></td>
-					<td style="padding-left: 30px;"><select>
+					<td style="padding-left: 30px;"><select name="depart">
 							<option>Trưởng Phòng</option>
 							<option>Nhân Viên</option>
 					</select></td>
 					<td><label>Phòng ban: </label></td>
-					<td>${dp}</td>
+					<td><p style="margin-left: 30px;">${dp}</p></td>
 				</tr>
 				<tr>
 					<td><label>Email</label></td>
-					<td><input type="text"></td>
+					<td><input name="email" type="text"></td>
 					<td><label>Điện Thoại</label></td>
-					<td><input type="text"></td>
+					<td><input name="phone" type="text"></td>
 				</tr>
 				<tr>
 					<td><label>Lương</label></td>
-					<td><input type="text"></td>
+					<td><input name="salary" type="text"></td>
 					<td><label>Ghi Chú</label></td>
-					<td><input type="text"></td>
+					<td><input name="notes" type="text"></td>
 				</tr>
 				<tr>
 					<td colspan="4">
 						<div id="button">
-							<button>Thêm</button>
-							<button>Hủy</button>
+							<button name="insert">Thêm</button>
+							<button name="cancer">Hủy</button>
 						</div>
 					</td>
 					<td></td>

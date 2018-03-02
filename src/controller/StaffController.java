@@ -49,6 +49,13 @@ public class StaffController {
 		return "parten/phongban";
 	}
 	
+	@RequestMapping(value="/staff")
+	public String getListStaff(ModelMap md) {
+		ArrayList<STAFFS> lstStaff = staff.getListStaffs();
+		md.addAttribute("lstStaff", lstStaff);
+		return "";
+	}
+	
 	@RequestMapping(value="/staff",params="insertStaff")
 	public String insert(HttpSession session) {
 		return "parten/insert-staff";

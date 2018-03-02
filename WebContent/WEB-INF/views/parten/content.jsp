@@ -18,7 +18,7 @@
 		</div>
 		<form action="staff.htm" method="post">
 			<div id="tool">
-				<h1 name="phongban">Nhân viên ${dp}</h1>
+				<h1>Nhân viên ${dp}</h1>
 				<div id="nut">
 					<button name="insertStaff">Thêm nhân viên</button>
 					<button name="editStaff">Sửa</button>

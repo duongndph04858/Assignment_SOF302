@@ -33,7 +33,7 @@
 				<li id="nv" class="mn"><a href="#">Nhân viên</a>
 					<ul class="sub-menu">
 						
-							<li class="smn"><a href="#">Danh sách nhân viên</a></li>
+							<li class="smn"><a href="staff.htm">Danh sách nhân viên</a></li>
 							<li class="smn"><a href="#">Danh sách đi công tác</a></li>
 							<li class="smn"><a href="#">Danh sách khen thưởng</a></li>
 							<li class="smn"><a href="#">Danh sách kỷ luật</a></li>
