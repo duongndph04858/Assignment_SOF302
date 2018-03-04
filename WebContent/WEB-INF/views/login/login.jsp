@@ -36,7 +36,7 @@ body {
 				<div>
 					<label>Mật khẩu :</label> <input type="password" name="password">
 				</div>
-				<a href="login.htm?reset-password">Quên mật khẩu</a>
+				<a style="color: #000" href="login.htm?reset-password">Quên mật khẩu</a>
 				<div>
 					<button name="verify">Đăng nhập</button>
 				</div>

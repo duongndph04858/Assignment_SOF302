@@ -42,11 +42,17 @@
 				<li id="pb" class="mn"><a href="#">Phòng ban</a>
 					<ul class="sub-menu">
 					<c:forEach var="depart" items="${departs }">
-						<li class="smn"><a href="depart.htm?${depart.id}">${depart.name}</a></li>
+						<li class="smn"><a href="depart.htm?DP=${depart.id}&start=0">${depart.name}</a></li>
 						</c:forEach>
 					</ul></li>
 				<li class="mn"><a href="#">Tài nguyên</a></li>
-				<li class="mn"><a href="login.htm">Cài đặt</a></li>
+				<li id="setting" class="mn"><a href="#">Cài đặt</a>
+				<ul class="sub-menu">						
+							<li class="smn"><a href="#">Ngôn ngữ</a></li>
+							<li class="smn"><a href="login.htm?logout">Đăng xuất</a></li>
+							
+					</ul>
+				</li>
 			</ul>
 		</div>
 	</div>

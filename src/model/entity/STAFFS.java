@@ -21,7 +21,7 @@ public class STAFFS {
 	@Column(name = "Name")
 	private String name;
 	@Column(name = "Gender")
-	private Boolean gender;
+	private boolean gender;
 	@Column(name = "Birthday")
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
@@ -41,7 +41,7 @@ public class STAFFS {
 	@Column(name = "LevelId")
 	private int levelId;
 
-	public STAFFS(String username, String name, Boolean gender, Date birthday, String photo, String email, String phone,
+	public STAFFS(String username, String name, boolean gender, Date birthday, String photo, String email, String phone,
 			Long salary, String notes, String departId, int levelId) {
 		super();
 		this.username = username;

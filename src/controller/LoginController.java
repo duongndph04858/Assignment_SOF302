@@ -1,6 +1,7 @@
 package controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -30,16 +31,22 @@ public class LoginController {
 	}
 
 	@RequestMapping(params = "verify")
-	public String verify(ModelMap md, @RequestParam("username") String username,
+	public String verify(ModelMap md,HttpSession session, @RequestParam("username") String username,
 			@RequestParam("password") String password) {
 		if (user.checkLogin(username, password)) {
-			md.addAttribute("mss", "Đăng nhập thành công!");
+			session.setAttribute("user", username);
 			return "redirect:/home.htm";
 		} else {
 			md.addAttribute("mss", "Đăng nhập thất bại!");
 			return "login/login";
 		}
 
+	}
+	@RequestMapping(params = "logout")
+	public String logout(ModelMap md,HttpSession session, HttpServletRequest request) {
+		session = request.getSession();
+		session.invalidate();
+		return "login/login";
 	}
 	
 }

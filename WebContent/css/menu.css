@@ -65,6 +65,11 @@ ul>li>ul>li>a {
 #nv:hover .sub-menu {
 	display: block;
 }
+
 #pb:hover ul {
+	display: block;
+}
+
+#setting:hover .sub-menu {
 	display: block;
 }

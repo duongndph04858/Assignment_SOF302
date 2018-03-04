@@ -16,7 +16,6 @@ DEPARTS_DAO dp;
 	
 @RequestMapping()
 public String home(HttpSession session) {
-	session.setAttribute("departs", dp.getListDeparts());
 	return "home";
 }
 
