@@ -28,56 +28,32 @@
 		</div>
 		<div id="menu">
 			<ul>
-				<li class="mn"><a class="${current }" href="home.htm">Trang chủ</a></li>
-				<li class="mn"><a class="${current }" href="#">Thông báo</a></li>
-				<li id="nv" class="mn"><a class="${current }" href="#">Nhân viên</a>
+				<li class="mn"><a href="home.htm">Trang chủ</a></li>
+				<li class="mn"><a href="#">Thông báo</a></li>
+				<li id="nv" class="mn"><a href="#">Nhân viên</a>
 					<ul class="sub-menu">
-						
-							<li class="smn"><a href="staff.htm">Danh sách nhân viên</a></li>
-							<li class="smn"><a href="#">Danh sách đi công tác</a></li>
-							<li class="smn"><a href="#">Danh sách khen thưởng</a></li>
-							<li class="smn"><a href="#">Danh sách kỷ luật</a></li>
-					</ul> </li>
-				<li class="mn"><a class="${current }" href="#">Chấm Công</a></li>
-				<li id="pb" class="mn"><a  class="${current }" href="#">Phòng ban</a>
+						<li class="smn"><a href="staff.htm">Danh sách nhân viên</a></li>
+						<li class="smn"><a href="#">Danh sách đi công tác</a></li>
+						<li class="smn"><a href="#">Danh sách khen thưởng</a></li>
+						<li class="smn"><a href="#">Danh sách kỷ luật</a></li>
+					</ul></li>
+				<li class="mn"><a href="#">Chấm Công</a></li>
+				<li id="pb" class="mn"><a href="#">Phòng ban</a>
 					<ul class="sub-menu">
-					<c:forEach var="depart" items="${departs }">
-						<li class="smn"><a class="${subitems }" href="depart.htm?DP=${depart.id}&start=0">${depart.name}</a></li>
+						<c:forEach var="depart" items="${departs }">
+							<li class="smn"><a href="depart.htm?DP=${depart.id}&start=0">${depart.name}</a></li>
 						</c:forEach>
 					</ul></li>
 				<li class="mn"><a href="#">Tài nguyên</a></li>
 				<li id="setting" class="mn"><a href="#">Cài đặt</a>
-				<ul class="sub-menu">						
-							<li class="smn"><a href="#">Ngôn ngữ</a></li>
-							<li class="smn"><a href="login.htm?logout">Đăng xuất</a></li>
-							
-					</ul>
-				</li>
+					<ul class="sub-menu">
+						<li class="smn"><a href="#">Ngôn ngữ</a></li>
+						<li class="smn"><a href="login.htm?logout">Đăng xuất</a></li>
+
+					</ul></li>
 			</ul>
 		</div>
 	</div>
 	<jsp:include page="${param.view }"></jsp:include>
-	<script type="text/javascript">
-		$(function() {
-			$('li.mn').children('a').click(function() {
-				/* $('li.mn').children('a').removeClass(); */
-				$(this).addClass('current');
-			});
-		});
-		$(function() {
-			$('li.smn').children('a').click(function() {
-				$(this).addClass('subitems');
-			});
-		});
-
-		var menu = document.querySelectorAll('#menu > ul > li');
-		for (var i = 0; i < menu.length; i++) {
-			menu[i].addEventListener("click", function() {
-				var menuList = document
-						.querySelectorAll('#menu > ul > li > ul');
-				this.children[1].style.display = "block";
-			});
-		}
-	</script>
 </body>
 </html>
