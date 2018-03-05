@@ -16,7 +16,7 @@ DEPARTS_DAO dp;
 	
 @RequestMapping()
 public String home(HttpSession session) {
-	return "home";
+	return "admin/home";
 }
 
 }

@@ -9,7 +9,6 @@
 </head>
 <body style="width: 100%; height: 100%">
 	<div>
-		<jsp:include page="parten/menu.jsp"></jsp:include>
 		<div id="right">
 			<div id="tool">
 				<h3>Top 10 nhân viên xuất sắc nhất tháng</h3>

@@ -11,7 +11,6 @@
 </head>
 <body style="width: 100%; height: 100%">
 	<div>
-		<jsp:include page="menu.jsp"></jsp:include>
 		<div>
 			<div id="bang">
 				<table>

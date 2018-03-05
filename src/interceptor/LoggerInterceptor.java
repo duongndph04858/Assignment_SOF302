@@ -17,6 +17,8 @@ public class LoggerInterceptor extends HandlerInterceptorAdapter {
 public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 		ModelAndView modelAndView) throws Exception {
 	modelAndView.getModelMap().addAttribute("departs", dp.getListDeparts());
+	modelAndView.getModelMap().addAttribute("current", "current");
+	modelAndView.getModelMap().addAttribute("subitems", "subitems");
 	
 	
 }

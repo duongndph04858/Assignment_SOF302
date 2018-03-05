@@ -64,14 +64,16 @@ public class STAFFS_DAO {
 		return listStaffs;
 	}
 
-	public void insertStaff(STAFFS staff) {
+	public boolean insertStaff(STAFFS staff) {
 		Session session = factory.openSession();
 		try {
 			Transaction tr = session.beginTransaction();
 			session.save(staff);
 			tr.commit();
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		} finally {
 			session.close();
 		}

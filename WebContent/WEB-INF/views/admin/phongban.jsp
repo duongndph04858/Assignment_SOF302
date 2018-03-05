@@ -9,7 +9,6 @@
 </head>
 <body style="width: 100%; height: 100%">
 <div>
-<jsp:include page="menu.jsp"></jsp:include>
 <div>
 <jsp:include page="content.jsp"></jsp:include>
 </div>

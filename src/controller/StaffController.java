@@ -57,7 +57,7 @@ public class StaffController {
 		default:
 			break;
 		}
-		return "parten/phongban";
+		return "admin/phongban";
 
 	}
 
@@ -65,45 +65,56 @@ public class StaffController {
 	public String getListStaff(ModelMap md) {
 		ArrayList<STAFFS> lstStaff = staff.getListStaffs();
 		md.addAttribute("lstStaff", lstStaff);
-		return "parten/staff";
+		return "admin/staff";
 	}
 
 	// thêm nhân viên
 	@RequestMapping(value = "/staff", params = "insertStaff")
 	public String insertStaff(HttpSession session) {
-		return "parten/insert-staff";
+		return "admin/insert-staff";
 	}
 
 	@RequestMapping(value = "/staff", params = "insert")
-	public String insert(HttpServletRequest request, ModelMap md, @RequestParam("image_uploads") MultipartFile image,
-			@RequestParam("fullname") String fullname, @RequestParam("username") String username,
-			@RequestParam("gender") String gender, @RequestParam("dob") String dob, @RequestParam("level") String level,
+	public String insert(HttpServletRequest request, ModelMap md, @RequestParam("image_uploads") MultipartFile photo,
+			@RequestParam("username") String fullname, @RequestParam("username") String username,
+			@RequestParam("gender") String gender, @RequestParam("dob") Date birthday,
+			@RequestParam("level") int level, @RequestParam("depart") String depart,
 			@RequestParam("email") String email, @RequestParam("phone") String phone,
 			@RequestParam("salary") Long salary, @RequestParam("notes") String notes) {
-		if (image.isEmpty()) {
+		if (photo.isEmpty()) {
 			md.addAttribute("message", "Vui lòng chọn file");
 		} else {
 			try {
-				String path = context.getRealPath("/images/" + image.getOriginalFilename());
-				image.transferTo(new File(path));
+				String path = context.getRealPath("/images/" + photo.getOriginalFilename());
+				photo.transferTo(new File(path));
 				System.out.println(path);
 			} catch (Exception e) {
 				System.out.println("lỗi-----------------------------------");
 			}
 		}
-		return "parten/insert-staff";
+		boolean gioitinh = gender.equals("Nữ") ? true : false;
+		boolean kq = false;
+		kq = staff.insertStaff(new STAFFS(fullname, username, gioitinh, birthday, photo.getOriginalFilename(), email,
+				phone, salary, notes, depart, level));
+		if (kq == true) {
+			System.out.println("======================================");
+			System.out.println("update thanh cong");
+			return "redirect:/depart.htm?DP=" + depart + "&start=0";
+		} else {
+			return "admin/edit-staff";
+		}
 	}
 	// sửa nhân viên
- 
+
 	@RequestMapping(value = "/staff", params = "editStaff")
 	public String edit(HttpServletRequest request, ModelMap md) {
 		String user = request.getParameter("username");
 		md.addAttribute("user", staff.getStaff(user));
-//		String[] user = request.getParameterValues("username");
-//		for (String x : user) {
-//			md.addAttribute("user", staff.getStaff(x));
-//		}
-		return "parten/edit-staff";
+		// String[] user = request.getParameterValues("username");
+		// for (String x : user) {
+		// md.addAttribute("user", staff.getStaff(x));
+		// }
+		return "admin/edit-staff";
 	}
 
 	@RequestMapping(value = "staff", params = "update")
@@ -131,16 +142,16 @@ public class StaffController {
 		if (kq == true) {
 			System.out.println("======================================");
 			System.out.println("update thanh cong");
-			return "redirect:/depart.htm?DP="+depart+"&start=0";
+			return "redirect:/depart.htm?DP=" + depart + "&start=0";
 		} else {
-			return "parten/edit-staff";
+			return "admin/edit-staff";
 		}
 	}
 
 	@RequestMapping(value = "/staff", params = "start")
 	public String getListStaffbyPage(HttpServletRequest request, ModelMap md, HttpSession session) {
 
-		return "parten/phongban";
+		return "admin/phongban";
 	}
 
 }
