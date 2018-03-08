@@ -1,6 +1,8 @@
 package model.model;
 
 import java.util.ArrayList;
+import java.util.Date;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -8,13 +10,16 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-
 import model.entity.STAFFS;
+import model.entity.USERS;
 
 @Component
 public class STAFFS_DAO {
 	@Autowired
 	SessionFactory factory;
+
+	@Autowired
+	MD5 md5;
 
 	public STAFFS_DAO() {
 		// TODO Auto-generated constructor stub
@@ -68,6 +73,7 @@ public class STAFFS_DAO {
 		Session session = factory.openSession();
 		try {
 			Transaction tr = session.beginTransaction();
+			session.save(new USERS(staff.getUsername(), md5.getmd5("123"), new Date()));
 			session.save(staff);
 			tr.commit();
 			return true;
@@ -77,7 +83,8 @@ public class STAFFS_DAO {
 		} finally {
 			session.close();
 		}
-	} 
+	}
+
 	public boolean updateStaff(STAFFS staff) {
 		Session session = factory.openSession();
 		try {
@@ -91,5 +98,30 @@ public class STAFFS_DAO {
 		} finally {
 			session.close();
 		}
+	}
+
+	public boolean deleteStaff(STAFFS staff) {
+		Session session = factory.openSession();
+		try {
+			Transaction tr = session.beginTransaction();
+			session.delete(staff);
+			tr.commit();
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			session.close();
+		}
+	}
+
+	@Transactional
+	public 	ArrayList<STAFFS> searchStaff(String username, String name) {
+		Session session = factory.getCurrentSession();
+		String hql = "from STAFFS where Username like " + username + "% or Name like " + name + "%";
+		Query query = session.createQuery(hql);
+		@SuppressWarnings("unchecked")
+		ArrayList<STAFFS> lst = (ArrayList<STAFFS>) query.list();
+		return lst;
 	}
 }

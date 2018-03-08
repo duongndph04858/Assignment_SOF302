@@ -6,27 +6,28 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<base href="${pageContext.servletContext.contextPath }/">
+<base href="${pageContext.servletContext.contextPath}/">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link type="text/css" rel="stylesheet" href="css/style.css">
 <link type="text/css" rel="stylesheet" href="css/insertStaff.css">
-<title>Thêm Nhân Viên</title>
+<title>Cập nhật thông tin nhân viên</title>
 </head>
 <body style="width: 100%; height: 100%">
+	<jsp:include page="menu.jsp" />
 	<div id="right">
 		<h1 style="margin-bottom: 40px;">Thông tin nhân viên</h1>
 		<form:form action="staff.htm" method="post"
-			enctype="multipart/form-data" modelAttribute="user">
+			enctype="multipart/form-data" modelAttribute="st">
 			<table>
 				<tr>
 
 					<td colspan="2">
 						<div style="height: 200px;">
 							<label>Ảnh</label>
-							<form:input path="photo" type="file" class="image_uploads"
+							<form:input path="photo" autocomplete="true" type="file"  class="image_uploads"
 								name="image_uploads"></form:input>
 							<div style="text-align: center;" class="preview">
-								<img src="images/${user.photo }">
+								<img src="images/${st.photo }">
 								<p>${message }</p>
 							</div>
 						</div>
@@ -55,7 +56,7 @@
 				<tr>
 					<td><label>Cấp độ:</label></td>
 					<td style="padding-left: 30px;"><select name="level">
-					<option value="1">Giám đốc</option>
+							<option value="1">Giám đốc</option>
 							<option value="2">Phó Giám đốc</option>
 							<option value="3">Trưởng Phòng</option>
 							<option value="4">Nhân Viên</option>
