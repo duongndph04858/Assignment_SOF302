@@ -7,22 +7,22 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link type="text/css" rel="stylesheet" href="css/content.css">
-<title>${lstP.get(0).depart.name}</title>
+<title>${listF.get(0).depart.name}</title>
 </head>
 <body>
 <jsp:include page="menu.jsp" />
 	<div id="right">
 		<div id="timkiem">
-			<form action="search.htm?DP=${lstP.get(0).depart.id}" method="post">
+			<form action="search.htm?DP=${listF.get(0).depart.id}" method="post">
 				<input id="search" name="search" type="text" value=""
 					placeholder="Nhập tên nhân viên hoặc tên đăng nhập" />
-					<input type="hidden" name="DP" value="${lstP.get(0).depart.id}">
+					<input type="hidden" name="DP" value="${listF.get(0).depart.id}">
 			</form>
 		</div>
 		<form style="height: 610px" action="staff.htm" method="get">
-		<input type="hidden" name="DP" value="${lstP.get(0).depart.id}">
+		<input type="hidden" name="DP" value="${listF.get(0).depart.id}">
 			<div id="tool">
-				<h1>Nhân viên ${lstP.get(0).depart.name}</h1>
+				<h1>Nhân viên ${listF.get(0).depart.name}</h1>
 				<div id="nut">
 					<button name="insertStaff">Thêm	nhân viên</button>
 					<button id="btnEdit" disabled="disabled" name="editStaff">Sửa</button>
@@ -46,7 +46,7 @@
 						<td>Lương</td>
 						<td>Ghi Chú</td>
 					</tr>
-					<c:forEach var="staff" items="${lstP}">
+					<c:forEach var="staff" items="${listF}">
 						<tr>
 							<td><input type="checkbox" name="u"
 								value="${staff.username }"></td>
@@ -76,7 +76,7 @@
 			<div style="display: inline;">
 				<a
 					style="text-decoration: none; padding: 0 5px; border: 1px solid #000;"
-					href="depart.htm?DP=${lstP.get(0).depart.id}&start=${status.index*4 }">${status.index+1 }</a>
+					href="depart.htm?DP=${listF.get(0).depart.id}&start=${status.index*4 }">${status.index+1 }</a>
 
 			</div>
 		</c:forEach>

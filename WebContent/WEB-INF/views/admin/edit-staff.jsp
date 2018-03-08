@@ -24,8 +24,8 @@
 					<td colspan="2">
 						<div style="height: 200px;">
 							<label>Ảnh</label>
-							<form:input path="photo" autocomplete="true" type="file"  class="image_uploads"
-								name="image_uploads"></form:input>
+							<form:input path="photo" autocomplete="true" type="file"
+								class="image_uploads" name="image_uploads"></form:input>
 							<div style="text-align: center;" class="preview">
 								<img src="images/${st.photo }">
 								<p>${message }</p>
@@ -45,11 +45,9 @@
 				</tr>
 				<tr>
 					<td><label>Giới Tính:</label></td>
-					<td><input class="gioitinh" name="gender" value="0"
-						type="radio" checked="checked"><label
-						style="margin: 10px;">Nam</label> <input class="gioitinh"
-						value="1" name="gender" type="radio"><label
-						style="margin: 10px;">Nữ</label></td>
+					<td><form:radiobutton cssStyle="width:10px;" path="gender"
+							value="true" label="Nữ" /> <form:radiobutton
+							cssStyle="width:10px;" path="gender" value="false" label="Nam" /></td>
 					<td><label>Ngày Sinh:</label></td>
 					<td><form:input path="birthday" name="dob" type="text" /></td>
 				</tr>

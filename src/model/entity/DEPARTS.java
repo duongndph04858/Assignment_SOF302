@@ -48,6 +48,5 @@ public class DEPARTS {
 		this.staffs = staffs;
 	}
 
-	
 
 }

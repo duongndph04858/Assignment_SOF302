@@ -116,9 +116,9 @@ public class STAFFS_DAO {
 	}
 
 	@Transactional
-	public 	ArrayList<STAFFS> searchStaff(String username, String name) {
+	public 	ArrayList<STAFFS> searchStaff(String username, String name,String depart) {
 		Session session = factory.getCurrentSession();
-		String hql = "from STAFFS where Username like " + username + "% or Name like " + name + "%";
+		String hql = "from STAFFS where DepartId='"+depart+"' and  (Username like '%" + username + "%' or Name like '%" + name + "%')";
 		Query query = session.createQuery(hql);
 		@SuppressWarnings("unchecked")
 		ArrayList<STAFFS> lst = (ArrayList<STAFFS>) query.list();

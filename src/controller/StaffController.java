@@ -169,11 +169,10 @@ public class StaffController {
 	public String searchStaff(HttpServletRequest request, ModelMap md) {
 		String nameOruser = request.getParameter("search");
 		String dep = request.getParameter("DP");
-		ArrayList<STAFFS> list = staff.searchStaff(nameOruser, nameOruser);
+		ArrayList<STAFFS> list = staff.searchStaff(nameOruser, nameOruser,dep);
 		if(list.size()>0) {
-			md.addAttribute("lstP", list);
-			md.addAttribute("timkiem", "Kết quả tìm kiếm:");
-			return "redirect:/depart.htm?DP=" + dep + "&start=0";
+			md.addAttribute("listF", list);
+			return "admin/found";
 		}else {
 			return "admin/notfound";
 		}
