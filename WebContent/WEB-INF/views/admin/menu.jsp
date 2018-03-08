@@ -51,6 +51,7 @@
 				<li id="setting" class="mn"><a href="#">Cài đặt</a>
 					<ul class="sub-menu">
 						<li class="smn"><a href="#">Ngôn ngữ</a></li>
+						<li class="smn"><a href="home/thongtin.htm">Thông tin cá nhân</a></li>
 						<li class="smn"><a href="login.htm?logout">Đăng xuất</a></li>
 
 					</ul></li>
