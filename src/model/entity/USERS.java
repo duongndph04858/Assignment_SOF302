@@ -1,9 +1,14 @@
 package model.entity;
 
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 @Entity
@@ -11,36 +16,42 @@ import javax.persistence.Table;
 public class USERS {
 	@Id
 	@Column(name = "Username")
-	private String Username;
+	private String username;
 	@Column(name = "Password")
-	private String Password;
-
+	private String password;
+	@Column(name="DateCreated")
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern="dd/MM/yyyy")
+	private Date dateCreated;
 	public USERS() {
 		// TODO Auto-generated constructor stub
 	}
-
-	public USERS(String username, String password) {
+	public USERS(String username, String password, Date dateCreated) {
 		super();
-		Username = username;
-		Password = password;
-
+		this.username = username;
+		this.password = password;
+		this.dateCreated = dateCreated;
 	}
-
 	public String getUsername() {
-		return Username;
+		return username;
 	}
-
 	public void setUsername(String username) {
-		Username = username;
+		this.username = username;
 	}
-
 	public String getPassword() {
-		return Password;
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public Date getDateCreated() {
+		return dateCreated;
+	}
+	public void setDateCreated(Date dateCreated) {
+		this.dateCreated = dateCreated;
 	}
 
-	public void setPassword(String password) {
-		Password = password;
-	}
+	
 
 
 }

@@ -6,6 +6,8 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -36,13 +38,15 @@ public class STAFFS {
 	private Long salary;
 	@Column(name = "Notes")
 	private String notes;
-	@Column(name = "departId")
-	private String departId;
-	@Column(name = "LevelId")
-	private int levelId;
+	@ManyToOne
+	@JoinColumn(name="DepartId")
+	private DEPARTS depart;
+	@ManyToOne
+	@JoinColumn(name="LevelId")
+	private LEVELSTAFF level;
 
 	public STAFFS(String username, String name, boolean gender, Date birthday, String photo, String email, String phone,
-			Long salary, String notes, String departId, int levelId) {
+			Long salary, String notes, DEPARTS depart, LEVELSTAFF level) {
 		super();
 		this.username = username;
 		this.name = name;
@@ -53,8 +57,8 @@ public class STAFFS {
 		this.phone = phone;
 		this.salary = salary;
 		this.notes = notes;
-		this.departId = departId;
-		this.levelId = levelId;
+		this.depart = depart;
+		this.level = level;
 	}
 
 	public STAFFS() {
@@ -133,20 +137,20 @@ public class STAFFS {
 		this.notes = notes;
 	}
 
-	public String getDepartId() {
-		return departId;
+	public DEPARTS getdepart() {
+		return depart;
 	}
 
-	public void setDepartId(String departId) {
-		this.departId = departId;
+	public void setdepart(DEPARTS depart) {
+		this.depart = depart;
 	}
 
-	public int getLevelId() {
-		return levelId;
+	public LEVELSTAFF getlevel() {
+		return level;
 	}
 
-	public void setLevelId(int levelId) {
-		this.levelId = levelId;
+	public void setlevel(LEVELSTAFF level) {
+		this.level = level;
 	}
 
 	

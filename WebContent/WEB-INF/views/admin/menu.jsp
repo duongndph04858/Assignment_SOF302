@@ -4,6 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<base href="${pageContext.servletContext.contextPath}/">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link type="text/css" rel="stylesheet" href="css/menu.css">
 <script src="js/jquery-3.3.1.js"></script>
@@ -32,7 +33,8 @@
 				<li class="mn"><a href="#">Thông báo</a></li>
 				<li id="nv" class="mn"><a href="#">Nhân viên</a>
 					<ul class="sub-menu">
-						<li class="smn"><a href="staff.htm">Danh sách nhân viên</a></li>
+						<li class="smn"><a href="staff.htm">Danh sách nhân
+								viên</a></li>
 						<li class="smn"><a href="#">Danh sách đi công tác</a></li>
 						<li class="smn"><a href="#">Danh sách khen thưởng</a></li>
 						<li class="smn"><a href="#">Danh sách kỷ luật</a></li>
@@ -41,7 +43,8 @@
 				<li id="pb" class="mn"><a href="#">Phòng ban</a>
 					<ul class="sub-menu">
 						<c:forEach var="depart" items="${departs }">
-							<li class="smn"><a href="depart.htm?DP=${depart.id}&start=0">${depart.name}</a></li>
+							<li class="smn"><a
+								href="depart.htm?DP=${depart.id}&start=0">${depart.name}</a></li>
 						</c:forEach>
 					</ul></li>
 				<li class="mn"><a href="#">Tài nguyên</a></li>
@@ -54,6 +57,5 @@
 			</ul>
 		</div>
 	</div>
-	<jsp:include page="${param.view }"></jsp:include>
 </body>
 </html>

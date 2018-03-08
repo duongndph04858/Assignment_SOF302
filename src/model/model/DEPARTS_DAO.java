@@ -29,4 +29,23 @@ public class DEPARTS_DAO {
 		List<DEPARTS> listDepart = query.list();
 		return listDepart;
 	}
+	@Transactional
+	public DEPARTS getDepart(String dp) {
+		Session session = factory.getCurrentSession();
+		String hql = "from DEPARTS where Id=:dp";
+		Query  query = session.createQuery(hql);
+		query.setParameter("dp", dp);
+		DEPARTS depart =(DEPARTS) query.uniqueResult();
+		return depart;
+	}
+	
+	@Transactional
+	public DEPARTS getDepartbyName(String name) {
+		Session session = factory.getCurrentSession();
+		String hql = "from DEPARTS where Name=:name";
+		Query  query = session.createQuery(hql);
+		query.setParameter("name", name);
+		DEPARTS depart =(DEPARTS) query.uniqueResult();
+		return depart;
+	}
 }

@@ -3,11 +3,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<base href="${pageContext.servletContext.contextPath}/">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Trang chủ</title>
 <link type="text/css" rel="stylesheet" href="css/style.css">
 </head>
 <body style="width: 100%; height: 100%">
+<jsp:include page="menu.jsp" />
 	<div>
 		<div id="right">
 			<div id="tool">
