@@ -19,4 +19,8 @@ public String home(HttpSession session) {
 	return "admin/home";
 }
 
+@RequestMapping("/thongtin")
+public String thongtin() {
+	return "admin/thongtinnv";
+}
 }
