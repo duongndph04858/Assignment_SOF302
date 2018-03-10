@@ -10,6 +10,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import model.model.STAFFS_DAO;
 import model.model.USERS_DAO;
 
 @Controller
@@ -18,6 +19,9 @@ public class LoginController {
 	@Autowired
 	@Qualifier("user")
 	private USERS_DAO user;
+	
+	@Autowired
+	private STAFFS_DAO staff;
 
 	@RequestMapping()
 	public String login(HttpServletRequest request) {
@@ -35,6 +39,7 @@ public class LoginController {
 			@RequestParam("password") String password) {
 		if (user.checkLogin(username, password)) {
 			session.setAttribute("user", username);
+			session.setAttribute("tk", staff.getStaff(username));
 			return "redirect:/home.htm";
 		} else {
 			md.addAttribute("mss", "Đăng nhập thất bại!");

@@ -17,4 +17,14 @@
 	line-height: 150px;
 }
 
+#right {
+	width: 81%;
+	height: 635px;
+	float: left;
+	margin-left: 10px;
+	border-bottom: 3px solid #ccc;
+	position: relative;
+	text-align: center;
+}
+
 

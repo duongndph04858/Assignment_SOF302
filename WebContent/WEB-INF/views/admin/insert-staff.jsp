@@ -15,18 +15,16 @@
 <body style="width: 100%; height: 100%">
 	<jsp:include page="menu.jsp" />
 	<div id="right">
-		<h1>Thêm Nhân Viên</h1>
-		<form:form action="staff/insertStaff.htm" method="post"
+		<h1 style="margin-bottom: 20px;">Thêm Nhân Viên</h1>
+		<form:form action="staff.htm" method="post"
 			enctype="multipart/form-data" modelAttribute="stf">
 			<table>
-				<tr style="height: 250px">
-					<td colspan="2"><div style="height: 200px;">
+				<tr>
+					<td colspan="2"><div style="height: 170px;">
 							<label>Ảnh</label>
-							<form:input path="photo" type="file" class="image_uploads"
-								name="image_uploads" />
-							<div style="text-align: center;" class="preview">
-								<p>Chưa có file được chọn</p>
-							</div>
+							<form:input cssStyle="width:250px" path="photo" type="file"
+								class="image_uploads" name="image_uploads" />
+							<div style="text-align: center;" class="preview"></div>
 						</div></td>
 					<td></td>
 					<td></td>
@@ -34,9 +32,16 @@
 				</tr>
 				<tr>
 					<td><label>Họ Và Tên:</label></td>
-					<td><form:input path="name" name="fullname" type="text" /></td>
+					<td><form:input path="name" required="required" /></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><label>Địa chỉ:</label></td>
+					<td><form:input path="address" /></td>
 					<td><label>Tài khoản:</label></td>
-					<td><form:input path="username" name="username" type="text" /></td>
+					<td><form:input path="username" name="username"
+							required="required" type="text" />
 				</tr>
 				<tr>
 					<td><label>Giới Tính:</label></td>
@@ -44,15 +49,16 @@
 							value="true" label="Nữ" /> <form:radiobutton
 							cssStyle="width:10px;" path="gender" value="false" label="Nam" />
 					<td><label>Ngày Sinh:</label></td>
-					<td><form:input path="birthday" name="birhtday" type="text" /></td>
+					<td><form:input path="birthday" name="birhtday"
+							required="required" type="text" /></td>
 				</tr>
 				<tr>
 					<td><label>Cấp độ:</label></td>
 					<td style="padding-left: 30px;"><form:select path="level">
-							<form:option value="1" label="Giám đốc"></form:option>
-							<form:option value="2" label="Phó Giám đốc"></form:option>
-							<form:option value="3" label="Trưởng phòng"></form:option>
 							<form:option value="4" label="Nhân viên"></form:option>
+							<form:option value="3" label="Trưởng phòng"></form:option>
+							<form:option value="2" label="Phó Giám đốc"></form:option>
+							<form:option value="1" label="Giám đốc"></form:option>
 						</form:select>
 					<td><label>Phòng ban: </label></td>
 					<td><form:select cssStyle="margin-left:30px;" path="depart">
@@ -64,21 +70,24 @@
 				</tr>
 				<tr>
 					<td><label>Email</label></td>
-					<td><form:input path="email" name="email" type="text" /></td>
+					<td><form:input path="email" name="email" required="required"
+							type="email" /></td>
 					<td><label>Điện Thoại</label></td>
-					<td><form:input path="phone" name="phone" type="text" /></td>
+					<td><form:input path="phone" name="phone" required="required"
+							type="text" /></td>
 				</tr>
 				<tr>
 					<td><label>Lương</label></td>
-					<td><form:input path="salary" name="salary" type="text" /></td>
+					<td><form:input path="salary" name="salary"
+							required="required" type="text" /></td>
 					<td><label>Ghi Chú</label></td>
 					<td><input name="notes" type="text" /></td>
 				</tr>
 				<tr>
 					<td colspan="4">
 						<div id="button">
-							<button type="submit">Thêm</button>
-							<button name="cancer">Hủy</button>
+							<button type="submit" name="insert">Thêm</button>
+							<button type="button" onclick="back()">Hủy</button>
 						</div>
 					</td>
 					<td></td>
@@ -104,9 +113,12 @@
 				var image = document.createElement('img');
 				image.src = window.URL.createObjectURL(curFiles[i]);
 				listItem.appendChild(image);
-				listItem.appendChild(para);
 				list.appendChild(listItem);
 			}
+		}
+
+		function back() {
+			history.back();
 		}
 	</script>
 

@@ -1,0 +1,63 @@
+@charset "UTF-8";
+
+#right {
+	width: 81%;
+	height: 635px;
+	float: left;
+	margin-left: 10px;
+	border-bottom: 3px solid #ccc;
+	position: relative;
+	text-align: center;
+}
+
+h3 {
+	font-size: 30px;
+}
+
+#r_left {
+	width: 60%;
+	float: left;
+}
+
+#r_right {
+	width: 40%;
+	float: left;
+}
+
+table {
+	width: 80%;
+	height: 60%;
+	font-size: 18px;
+	padding-top: 100px;
+	margin-left: 180px;
+}
+
+tr {
+	width: 100px;
+	padding-top: 30px;
+}
+
+td {
+	width: 100px;
+}
+
+tr, td {
+	text-align: left;
+	padding: 10px;
+}
+
+#img {
+	width: 150px;
+	height: 150px;
+	background: aqua;
+	text-align: center;
+	margin-top: 110px;
+	margin-left: 20px;
+}
+
+#rspass {
+	width: 150px;
+	height: 30px;
+	margin-top: 100px;
+	margin-right: 250px;
+}

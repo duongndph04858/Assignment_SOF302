@@ -1,4 +1,10 @@
 eclipse.preferences.version=1
+encoding//i18n-res/global.properties=UTF-8
+encoding//i18n-res/global_vi.properties=UTF-8
+encoding//i18n-res/table.properties=UTF-8
+encoding//i18n-res/table_vi.properties=UTF-8
+encoding//i18n-res/title_vi.properties=UTF-8
 encoding//src/controller/LoginController.java=UTF-8
 encoding//src/controller/StaffController.java=UTF-8
-encoding//src/test.java=UTF-8
+encoding//src/model/entity/STAFFS.java=UTF-8
+encoding//src/model/model/RECORDS_DAO.java=UTF-8

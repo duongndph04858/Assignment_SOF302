@@ -20,12 +20,12 @@
 			enctype="multipart/form-data" modelAttribute="st">
 			<table>
 				<tr>
-
 					<td colspan="2">
-						<div style="height: 200px;">
+						<div style="height: 170px;">
 							<label>Ảnh</label>
-							<form:input path="photo" autocomplete="true" type="file"
-								class="image_uploads" name="image_uploads"></form:input>
+							<form:input cssStyle="width:250px" path="photo"
+								autocomplete="true" type="file" class="image_uploads"
+								name="image_uploads"></form:input>
 							<div style="text-align: center;" class="preview">
 								<img src="images/${st.photo }">
 								<p>${message }</p>
@@ -38,9 +38,15 @@
 				</tr>
 				<tr>
 					<td><label>Họ Và Tên:</label></td>
-					<td><form:input path="name" /></td>
+					<td><form:input required="required" path="name" /></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><label>Địa chỉ:</label></td>
+					<td><form:input required="required" path="address" /></td>
 					<td><label>Tài khoản:</label></td>
-					<td><form:input path="username" readonly="true"
+					<td><form:input path="username" required="required" readonly="true"
 							name="username" type="text" /></td>
 				</tr>
 				<tr>
@@ -49,7 +55,7 @@
 							value="true" label="Nữ" /> <form:radiobutton
 							cssStyle="width:10px;" path="gender" value="false" label="Nam" /></td>
 					<td><label>Ngày Sinh:</label></td>
-					<td><form:input path="birthday" name="dob" type="text" /></td>
+					<td><form:input path="birthday" required="required" name="dob" type="text" /></td>
 				</tr>
 				<tr>
 					<td><label>Cấp độ:</label></td>
@@ -68,30 +74,27 @@
 				</tr>
 				<tr>
 					<td><label>Email</label></td>
-					<td><form:input path="email" name="email" type="text" /></td>
+					<td><form:input path="email" required="required" name="email" type="email" /></td>
 					<td><label>Điện Thoại</label></td>
-					<td><form:input path="phone" name="phone" type="text" /></td>
+					<td><form:input path="phone" required="required" name="phone" type="text" /></td>
 				</tr>
 				<tr>
 					<td><label>Lương</label></td>
-					<td><form:input path="salary" name="salary" type="text" /></td>
+					<td><form:input path="salary" required="required" name="salary" type="text" /></td>
 					<td><label>Ghi Chú</label></td>
 					<td><form:input path="notes" name="notes" type="text" /></td>
 				</tr>
 				<tr>
 					<td colspan="4">
 						<div id="button">
-							<button name="update">Lưu</button>
-							<button name="cancer">Hủy</button>
+							<button type="submit" name="update">Lưu</button>
+							<button type="button" onclick="back()">Hủy</button>
 						</div>
 					</td>
 					<td></td>
 				</tr>
 			</table>
 		</form:form>
-	</div>
-	<div>
-		<jsp:include page="${param.view }"></jsp:include>
 	</div>
 	<script type="text/javascript">
 		var input = document.querySelector('.image_uploads');
@@ -111,9 +114,12 @@
 				var image = document.createElement('img');
 				image.src = window.URL.createObjectURL(curFiles[i]);
 				listItem.appendChild(image);
-				listItem.appendChild(para);
 				list.appendChild(listItem);
 			}
+		}
+
+		function back() {
+			history.back();
 		}
 	</script>
 </body>

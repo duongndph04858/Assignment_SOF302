@@ -6,6 +6,7 @@ import java.util.Date;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,27 +37,82 @@ public class StaffController {
 	@Autowired
 	USERS_DAO us;
 
-	@RequestMapping(value = "/depart")
-	public String depart(HttpSession session, ModelMap md, HttpServletRequest request) {
-		int batdau = 0;
+	@Autowired
+	SessionFactory factory;
 
+	@RequestMapping(value = "depart/GD")
+	public String departGD(HttpSession session, ModelMap md, HttpServletRequest request) {
+		int batdau = 0;
 		if (request.getParameter("start") != null) {
-			batdau = Integer.parseInt((String) request.getParameter("start"));
+			batdau = Integer.parseInt(request.getParameter("start"));
 		}
-		ArrayList<STAFFS> lst = staff.getListStaffByDP(request.getParameter("DP"));
+		ArrayList<STAFFS> lst = staff.getListStaffByDP("GD");
 		int sotrang = (int) Math.round(lst.size() / 4);
-		ArrayList<STAFFS> lstP = staff.getStaffPage(batdau, 4, request.getParameter("DP"));
+		ArrayList<STAFFS> lstP = staff.getStaffPage(batdau, 4, "GD");
 		md.addAttribute("lstP", lstP);
 		md.addAttribute("page", sotrang);
-		return "admin/phongban";
+		return "admin/nhanvien";
+
+	}
+
+	@RequestMapping(value = "depart/KT")
+	public String departKT(HttpSession session, ModelMap md, HttpServletRequest request) {
+		int batdau = 0;
+		if (request.getParameter("start") != null) {
+			batdau = Integer.parseInt(request.getParameter("start"));
+		}
+		ArrayList<STAFFS> lst = staff.getListStaffByDP("KT");
+		int sotrang = (int) Math.round(lst.size() / 4);
+		ArrayList<STAFFS> lstP = staff.getStaffPage(batdau, 4, "KT");
+		md.addAttribute("lstP", lstP);
+		md.addAttribute("page", sotrang);
+		return "admin/nhanvien";
+
+	}
+
+	@RequestMapping(value = "depart/NS")
+	public String departNS(HttpSession session, ModelMap md, HttpServletRequest request) {
+		int batdau = 0;
+		if (request.getParameter("start") != null) {
+			batdau = Integer.parseInt(request.getParameter("start"));
+		}
+		ArrayList<STAFFS> lst = staff.getListStaffByDP("NS");
+		int sotrang = (int) Math.round(lst.size() / 4);
+		ArrayList<STAFFS> lstP = staff.getStaffPage(batdau, 4, "NS");
+		md.addAttribute("lstP", lstP);
+		md.addAttribute("page", sotrang);
+		return "admin/nhanvien";
+
+	}
+
+	@RequestMapping(value = "depart/IT")
+	public String departIT(HttpSession session, ModelMap md, HttpServletRequest request) {
+		int batdau = 0;
+		if (request.getParameter("start") != null) {
+			batdau = Integer.parseInt(request.getParameter("start"));
+		}
+		ArrayList<STAFFS> lst = staff.getListStaffByDP("IT");
+		int sotrang = (int) Math.round(lst.size() / 4);
+		ArrayList<STAFFS> lstP = staff.getStaffPage(batdau, 4, "IT");
+		md.addAttribute("lstP", lstP);
+		md.addAttribute("page", sotrang);
+		return "admin/nhanvien";
 
 	}
 
 	@RequestMapping(value = "/staff")
-	public String getListStaff(ModelMap md) {
+	public String getListStaff(ModelMap md, HttpServletRequest request) {
 		ArrayList<STAFFS> lstStaff = staff.getListStaffs();
-		md.addAttribute("lstStaff", lstStaff);
-		return "admin/staff";
+		int batdau = 0;
+
+		if (request.getParameter("start") != null) {
+			batdau = Integer.parseInt(request.getParameter("start"));
+		}
+		int sotrang = (int) Math.round(lstStaff.size() / 4);
+		ArrayList<STAFFS> lst = staff.getStaffPage(batdau, 4);
+		md.addAttribute("lst", lst);
+		md.addAttribute("trang", sotrang);
+		return "admin/allstaff";
 	}
 
 	// thêm nhân viên
@@ -67,13 +123,14 @@ public class StaffController {
 		return "admin/insert-staff";
 	}
 
-	@RequestMapping(value = "staff/insertStaff")
+	@RequestMapping(value = "staff", params = "insert")
 	public String insert(HttpSession session, HttpServletRequest request, ModelMap md,
 			@RequestParam("photo") MultipartFile photo, @RequestParam("name") String name,
-			@RequestParam("username") String username, @RequestParam("gender") String gender,
-			@RequestParam("birthday") Date birthday, @RequestParam("level") int level,
-			@RequestParam("depart") String depart, @RequestParam("email") String email,
-			@RequestParam("phone") String phone, @RequestParam("salary") Long salary) {
+			@RequestParam("address") String address, @RequestParam("username") String username,
+			@RequestParam("gender") String gender, @RequestParam("birthday") Date birthday,
+			@RequestParam("level") int level, @RequestParam("depart") String depart,
+			@RequestParam("email") String email, @RequestParam("phone") String phone,
+			@RequestParam("salary") Long salary) {
 		String notes = request.getParameter("notes");
 		if (notes == null) {
 			notes = "";
@@ -86,19 +143,18 @@ public class StaffController {
 				System.out.println("----------" + path);
 				photo.transferTo(new File(path));
 			} catch (Exception e) {
-				System.out.println("lỗi-----------------------------------" + e);
+				return "admin/edit-staff";
 			}
 		}
 		boolean gioitinh = gender.equals("Nữ") ? true : false;
 		boolean kq = false;
-		kq = staff.insertStaff(new STAFFS(username, name, gioitinh, birthday, photo.getOriginalFilename(), email, phone,
-				salary, notes, this.depart.getDepart(depart), lv.getLevelStaff(level)));
+		kq = staff.insertStaff(new STAFFS(username, name, gioitinh, address, birthday, photo.getOriginalFilename(),
+				email, phone, salary, notes, this.depart.getDepart(depart), lv.getLevelStaff(level)));
 		if (kq == true) {
-			System.out.println("======================================");
-			System.out.println("them thanh cong");
-			return "redirect:/depart.htm?DP=" + depart + "&start=0";
+			md.addAttribute("message", "Thêm thành công");
+			return "redirect:/depart/" + depart + ".htm?start=0";
 		} else {
-			System.out.println("them that bai");
+			md.addAttribute("message", "Thêm thất bại");
 			return "admin/insert-staff";
 		}
 
@@ -115,10 +171,10 @@ public class StaffController {
 	@RequestMapping(value = "/staff", params = "update")
 	public String update(HttpServletRequest request, ModelMap md, @RequestParam("photo") MultipartFile photo,
 			@RequestParam("name") String name, @RequestParam("username") String username,
-			@RequestParam("gender") String gender, @RequestParam("birthday") Date birthday,
-			@RequestParam("level") int level, @RequestParam("depart") String depart,
-			@RequestParam("email") String email, @RequestParam("phone") String phone,
-			@RequestParam("salary") Long salary,
+			@RequestParam("address") String address, @RequestParam("gender") String gender,
+			@RequestParam("birthday") Date birthday, @RequestParam("level") int level,
+			@RequestParam("depart") String depart, @RequestParam("email") String email,
+			@RequestParam("phone") String phone, @RequestParam("salary") Long salary,
 			@RequestParam(value = "notes", defaultValue = "", required = false) String notes) {
 		if (photo.isEmpty()) {
 			md.addAttribute("message", "Vui lòng chọn file");
@@ -128,17 +184,15 @@ public class StaffController {
 				photo.transferTo(new File(path));
 				System.out.println(path);
 			} catch (Exception e) {
-				System.out.println("lỗi-----------------------------------" + e);
+				return "admin/edit-staff";
 			}
 		}
 		boolean gioitinh = gender.equals("Nữ") ? true : false;
 		boolean kq = false;
-		kq = staff.updateStaff(new STAFFS(username, name, gioitinh, birthday, photo.getOriginalFilename(), email, phone,
-				salary, notes, this.depart.getDepart(depart), lv.getLevelStaff(level)));
+		kq = staff.updateStaff(new STAFFS(username, name, gioitinh, address, birthday, photo.getOriginalFilename(),
+				email, phone, salary, notes, this.depart.getDepart(depart), lv.getLevelStaff(level)));
 		if (kq == true) {
-			System.out.println("======================================");
-			System.out.println("update thanh cong");
-			return "redirect:/depart.htm?DP=" + depart + "&start=0";
+			return "redirect:/depart/" + depart + ".htm?start=0";
 		} else {
 			return "admin/edit-staff";
 		}
@@ -151,17 +205,17 @@ public class StaffController {
 		String dp = "";
 		for (String x : users) {
 			STAFFS st = staff.getStaff(x);
-			dp = staff.getStaff(x).getdepart().getId();
+			dp = staff.getStaff(x).getDepart().getId();
 			kq = staff.deleteStaff(st);
 			us.deleteUser(us.getUser(x));
 		}
 		if (kq == true) {
 			md.addAttribute("xoa", "Xóa thành công!");
-			return "redirect:/depart.htm?DP=" + dp + "&start=0";
+			return "redirect:/depart/" + dp + ".htm?start=0";
 
 		} else {
 			md.addAttribute("xoa", "Xóa thành công!");
-			return "redirect:/depart.htm?DP=" + dp + "&start=0";
+			return "redirect:/depart/" + dp + ".htm?start=0";
 		}
 	}
 
@@ -169,11 +223,11 @@ public class StaffController {
 	public String searchStaff(HttpServletRequest request, ModelMap md) {
 		String nameOruser = request.getParameter("search");
 		String dep = request.getParameter("DP");
-		ArrayList<STAFFS> list = staff.searchStaff(nameOruser, nameOruser,dep);
-		if(list.size()>0) {
+		ArrayList<STAFFS> list = staff.searchStaff(nameOruser, nameOruser, dep);
+		if (list.size() > 0) {
 			md.addAttribute("listF", list);
 			return "admin/found";
-		}else {
+		} else {
 			return "admin/notfound";
 		}
 	}

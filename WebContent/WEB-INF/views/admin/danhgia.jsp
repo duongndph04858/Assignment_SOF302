@@ -125,6 +125,11 @@ tr, td {
 					<td>Email</td>
 					<td>${tk.email }</td>
 				</tr>
+				
+				<tr>
+					<td>Lý do</td>
+					<td><input type="textarea" > </td>
+				</tr>
 			</table>
 
 		</div>
@@ -132,8 +137,8 @@ tr, td {
 			<div id="img">
 				<img width="150px" src="images/${tk.photo}">
 			</div>
-
-			<button id="rspass">Đặt lại mật khẩu</button>
+			<button class="appreciate">Khen thưởng</button>
+			<button class="appreciate">Kỷ luật</button>
 
 		</div>
 	</div>

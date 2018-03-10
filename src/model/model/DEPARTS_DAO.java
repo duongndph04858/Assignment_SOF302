@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -47,5 +48,20 @@ public class DEPARTS_DAO {
 		query.setParameter("name", name);
 		DEPARTS depart =(DEPARTS) query.uniqueResult();
 		return depart;
+	}
+	
+	public boolean deleteDepart(DEPARTS dp) {
+		Session session = factory.openSession();
+		Transaction tr = session.beginTransaction();
+		try {
+			session.delete(dp);
+			tr.commit();
+			return true;
+		} catch (Exception e) {
+			tr.rollback();
+			return false;
+		}finally {
+			session.close();
+		}
 	}
 }

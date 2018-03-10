@@ -5,6 +5,8 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -25,20 +27,21 @@ public class RECORDS {
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "MM/DD/YYYY")
 	private Date Date;
-	@Column(name = "StaffUsername")
-	private String StaffUsername;
+	@ManyToOne
+	@JoinColumn(name = "StaffUsername")
+	private STAFFS staff;
 	
 	public RECORDS() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public RECORDS(int id, String type, String reason,Date date, String staffUsername) {
+	public RECORDS(int id, String type, String reason, java.util.Date date, STAFFS staff) {
 		super();
 		Id = id;
 		Type = type;
 		Reason = reason;
 		Date = date;
-		StaffUsername = staffUsername;
+		this.staff= staff;
 	}
 
 	public int getId() {
@@ -73,13 +76,16 @@ public class RECORDS {
 		Date = date;
 	}
 
-	public String getStaffUsername() {
-		return StaffUsername;
+	public STAFFS getStaff() {
+		return this.staff;
 	}
 
-	public void setStaffUsername(String staffUsername) {
-		StaffUsername = staffUsername;
+	public void setStaff(STAFFS staff) {
+		this.staff = staff;
 	}
+
+	
+	
 	
 	
 }

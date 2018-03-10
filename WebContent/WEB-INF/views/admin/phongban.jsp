@@ -7,28 +7,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link type="text/css" rel="stylesheet" href="css/content.css">
-<title>${lstP.get(0).depart.name}</title>
+<title>Phòng ban</title>
 </head>
 <body>
-<jsp:include page="menu.jsp" />
+	<jsp:include page="menu.jsp" />
 	<div id="right">
-		<div id="timkiem">
-			<form action="search.htm?DP=${lstP.get(0).depart.id}" method="post">
-				<input id="search" name="search" type="text" value=""
-					placeholder="Nhập tên nhân viên hoặc tên đăng nhập" />
-					<input type="hidden" name="DP" value="${lstP.get(0).depart.id}">
-			</form>
-		</div>
-		<form style="height: 610px" action="staff.htm" method="get">
-		<input type="hidden" name="DP" value="${lstP.get(0).depart.id}">
+		<form style="height: 610px" action="mndepart.htm" method="post">
 			<div id="tool">
-				<h1>Nhân viên ${lstP.get(0).depart.name}</h1>
+			<h1>Quản lý phòng ban</h1>
 				<div id="nut">
-					<button name="insertStaff">Thêm	nhân viên</button>
-					<button id="btnEdit" disabled="disabled" name="editStaff">Sửa</button>
+					<button name="insertDepart">Thêm phòng ban</button>
 					<button id="btnDelete" disabled="disabled" name="delete">Xóa</button>
-					<button id="btnExport" disabled="disabled" name="export">Xuất
-						danh sách</button>
 				</div>
 			</div>
 			<hr>
@@ -36,53 +25,41 @@
 				<table>
 					<tr style="height: 30px; font-weight: bold;">
 						<td></td>
-						<td>Ảnh</td>
-						<td>Họ và Tên</td>
-						<td>Giới Tính</td>
-						<td>Ngày Sinh</td>
-						<td>Cấp độ</td>
-						<td>Email</td>
-						<td>Điện Thoại</td>
-						<td>Lương</td>
-						<td>Ghi Chú</td>
+						<td>Mã phòng ban</td>
+						<td>Tên phòng ban</td>
+						<td>Số nhân viên</td>
+						<td>Trưởng phòng</td>
 					</tr>
-					<c:forEach var="staff" items="${lstP}">
+					<c:forEach var="dep" items="${departs}">
 						<tr>
-							<td><input type="checkbox" name="u"
-								value="${staff.username }"></td>
-							<td><img style="height: 100px;" src="images/${staff.photo }"></td>
-							<td class="tdleft">${staff.name }</td>
-							<c:choose>
-								<c:when test="${staff.gender ==true }">
-									<td>Nữ</td>
-								</c:when>
-								<c:when test="${staff.gender ==false }">
-									<td>Nam</td>
-								</c:when>
-							</c:choose>
-							<td><fmt:formatDate value="${staff.birthday }"
-									pattern="dd-MM-yyyy" /></td>
-							<td>${staff.level.name }</td>
-							<td class="tdleft">${staff.email }</td>
-							<td>${staff.phone }</td>
-							<td>${staff.salary }</td>
-							<td>${staff.notes}</td>
+							<td><input type="checkbox" name="depart" value="${dep.id }"></td>
+							<td>${dep.id }</td>
+							<td>${dep.name }</td>
+							<c:if test="${dep.id.equals('GD') }">
+								<td>${GD }</td>
+								<td>${leaderGD.name}</td>
+							</c:if>
+							<c:if test="${dep.id.equals('KT') }">
+								<td>${KT }</td>
+								<td>${leaderKT.name}</td>
+							</c:if>
+							<c:if test="${dep.id.equals('NS') }">
+								<td>${NS }</td>
+								<td>${leaderNS.name}</td>
+							</c:if>
+							<c:if test="${dep.id.equals('IT') }">
+								<td>${IT }</td>
+								<td>${leaderIT.name}</td>
+							</c:if>
+							
 						</tr>
 					</c:forEach>
 				</table>
 			</div>
 		</form>
-		<c:forEach var="item" varStatus="status" begin="0" end="${page }">
-			<div style="display: inline;">
-				<a
-					style="text-decoration: none; padding: 0 5px; border: 1px solid #000;"
-					href="depart.htm?DP=${lstP.get(0).depart.id}&start=${status.index*4 }">${status.index+1 }</a>
-
-			</div>
-		</c:forEach>
 	</div>
 	<script type="text/javascript">
-		var checkbox = document.getElementsByName('u');
+		var checkbox = document.getElementsByName('depart');
 		for (var i = 0; i < checkbox.length; i++) {
 			checkbox[i].onclick = function(e) {
 				var sl = 0;
@@ -92,16 +69,10 @@
 					}
 				}
 				if (sl < 1) {
-					document.getElementById('btnExport').disabled = true;
 					document.getElementById('btnDelete').disabled = true;
-					document.getElementById('btnEdit').disabled = true;
 				} else if (sl == 1) {
-					document.getElementById('btnEdit').disabled = false;
-					document.getElementById('btnExport').disabled = false;
 					document.getElementById('btnDelete').disabled = false;
 				} else {
-					document.getElementById('btnEdit').disabled = true;
-					document.getElementById('btnExport').disabled = false;
 					document.getElementById('btnDelete').disabled = false;
 				}
 

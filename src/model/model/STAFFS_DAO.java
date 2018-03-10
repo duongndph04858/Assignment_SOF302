@@ -55,6 +55,19 @@ public class STAFFS_DAO {
 		ArrayList<STAFFS> listStaffs = (ArrayList<STAFFS>) query.list();
 		return listStaffs;
 	}
+	
+	@Transactional
+	@SuppressWarnings("unchecked")
+	public ArrayList<STAFFS> getLeader(String departID) {
+		Session session = factory.getCurrentSession();
+		String hql = "from STAFFS where DepartId=:departID order by LevelId";
+		Query query = session.createQuery(hql);
+		query.setParameter("departID", departID);
+		query.setFirstResult(0);
+		query.setMaxResults(1);
+		ArrayList<STAFFS> listStaffs = (ArrayList<STAFFS>) query.list();
+		return listStaffs;
+	}
 
 	@Transactional
 	@SuppressWarnings("unchecked")
@@ -116,12 +129,25 @@ public class STAFFS_DAO {
 	}
 
 	@Transactional
-	public 	ArrayList<STAFFS> searchStaff(String username, String name,String depart) {
+	public ArrayList<STAFFS> searchStaff(String username, String name, String depart) {
 		Session session = factory.getCurrentSession();
-		String hql = "from STAFFS where DepartId='"+depart+"' and  (Username like '%" + username + "%' or Name like '%" + name + "%')";
+		String hql = "from STAFFS where DepartId='" + depart + "' and  (Username like '%" + username
+				+ "%' or Name like '%" + name + "%')";
 		Query query = session.createQuery(hql);
 		@SuppressWarnings("unchecked")
 		ArrayList<STAFFS> lst = (ArrayList<STAFFS>) query.list();
 		return lst;
+	}
+
+	@Transactional
+	public ArrayList<STAFFS> getStaffPage(int min, int max) {
+		Session session = factory.getCurrentSession();
+		String hql = "from STAFFS";
+		Query query = session.createQuery(hql);
+		query.setFirstResult(min);
+		query.setMaxResults(max);
+		@SuppressWarnings("unchecked")
+		ArrayList<STAFFS> listStaffs = (ArrayList<STAFFS>) query.list();
+		return listStaffs;
 	}
 }
