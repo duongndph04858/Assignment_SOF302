@@ -19,8 +19,9 @@ public class RECORDS_DAO {
 	@Transactional
 	public ArrayList<RECORDS> getTopStaff() {
 		Session session = factory.getCurrentSession();
-		String hql = "from RECORDS";
+		String hql = "from RECORDS where Type =:KT ";
 		Query query = session.createQuery(hql);
+		query.setParameter("KT", "KT");
 		query.setFirstResult(0);
 		query.setMaxResults(10);
 		@SuppressWarnings("unchecked")
@@ -31,8 +32,9 @@ public class RECORDS_DAO {
 	@Transactional
 	public ArrayList<RECORDS> getRecPage(int min, int max) {
 		Session session = factory.getCurrentSession();
-		String hql = "from RECORDS";
+		String hql = "from RECORDS  where Type =:KT ";
 		Query query = session.createQuery(hql);
+		query.setParameter("KT", "KT");
 		query.setFirstResult(min);
 		query.setMaxResults(max);
 		@SuppressWarnings("unchecked")
