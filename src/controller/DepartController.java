@@ -49,11 +49,11 @@ public class DepartController {
 		}
 		if (kq == true) {
 			md.addAttribute("xoa", "Xóa thành công!");
-			return "redirect:/depart.htm?DP=" + dp + "&start=0";
+			return "redirect:/home.htm";
 
 		} else {
 			md.addAttribute("xoa", "Xóa thành công!");
-			return "redirect:/depart.htm?DP=" + dp + "&start=0";
+			return "redirect:/home.htm";
 		}
 	}
 }

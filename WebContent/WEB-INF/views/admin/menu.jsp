@@ -35,16 +35,16 @@
 							code="global.home" /> </a></li>
 				<li class="mn"><a href="#"><s:message
 							code="global.notifications" /></a></li>
-				<li id="nv" class="mn"><a href="staff.htm"><s:message
+				<li id="nv" class="mn"><a href="staff/allstaff.htm"><s:message
 							code="global.staffs" /></a>
 					<ul class="sub-menu">
-						<li class="smn"><a href="staff.htm"><s:message
+						<li class="smn"><a href="staff/allstaff.htm"><s:message
 									code="global.liststaff" /></a></li>
 						<li class="smn"><a href="#"><s:message
 									code="global.liststaffB" /></a></li>
 						<li class="smn"><a href="reward.htm"><s:message
 									code="global.reward" /></a></li>
-						<li class="smn"><a href="#"><s:message
+						<li class="smn"><a href="disciplines.htm"><s:message
 									code="global.disciplines" /></a></li>
 					</ul></li>
 				<li class="mn"><a href="#"><s:message

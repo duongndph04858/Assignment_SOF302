@@ -4,6 +4,7 @@ package model.entity;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -18,6 +19,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class RECORDS {
 	@Id
 	@Column(name = "Id")
+	@GeneratedValue
 	private int Id;
 	@Column(name = "Type")
 	private String Type;
@@ -35,9 +37,8 @@ public class RECORDS {
 		// TODO Auto-generated constructor stub
 	}
 
-	public RECORDS(int id, String type, String reason, java.util.Date date, STAFFS staff) {
+	public RECORDS(String type, String reason, java.util.Date date, STAFFS staff) {
 		super();
-		Id = id;
 		Type = type;
 		Reason = reason;
 		Date = date;

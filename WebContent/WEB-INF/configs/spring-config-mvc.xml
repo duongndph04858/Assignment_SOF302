@@ -30,7 +30,7 @@
 			<mvc:exclude-mapping path="/home/index.htm"/> <bean class="poly.interceptor.LoggerInterceptor" 
 			/> </mvc:interceptor> -->
 		<mvc:interceptor>
-			<mvc:mapping path="/**" />			
+			<mvc:mapping path="/**" />
 			<mvc:exclude-mapping path="/login.htm" />
 			<mvc:exclude-mapping path="/login.htm?reset-password" />
 			<bean class="interceptor.SecurityInterceptor" />
@@ -38,28 +38,31 @@
 		<mvc:interceptor>
 			<mvc:mapping path="/depart/**" />
 			<mvc:mapping path="/mndepart**" />
-			<mvc:mapping path="/staff**" />		
-			<mvc:mapping path="/search**" />			
+			<mvc:mapping path="/staff/**" />
+			<mvc:mapping path="/search**" />
 			<bean class="interceptor.PermissionInterceptor" />
 		</mvc:interceptor>
-				<mvc:interceptor>
-			<mvc:mapping path="/mndepart**" />	
+		<mvc:interceptor>
+			<mvc:mapping path="/staff/**" />
+			<mvc:mapping path="/mndepart**" />
 			<mvc:mapping path="/depart/GD**" />
-			<mvc:mapping path="/depart/KT**" />		
+			<mvc:mapping path="/depart/KT**" />
 			<mvc:mapping path="/depart/IT**" />
 			<bean class="interceptor.PermissionInterceptor1" />
 		</mvc:interceptor>
 		<mvc:interceptor>
-			<mvc:mapping path="/mndepart**" />	
+			<mvc:mapping path="/staff/**" />
+			<mvc:mapping path="/mndepart**" />
 			<mvc:mapping path="/depart/GD**" />
-			<mvc:mapping path="/depart/NS**" />		
+			<mvc:mapping path="/depart/NS**" />
 			<mvc:mapping path="/depart/IT**" />
 			<bean class="interceptor.PermissionInterceptor2" />
 		</mvc:interceptor>
 		<mvc:interceptor>
-			<mvc:mapping path="/mndepart**" />	
+			<mvc:mapping path="/staff/**" />
+			<mvc:mapping path="/mndepart**" />
 			<mvc:mapping path="/depart/GD**" />
-			<mvc:mapping path="/depart/NS**" />		
+			<mvc:mapping path="/depart/NS**" />
 			<mvc:mapping path="/depart/KT**" />
 			<bean class="interceptor.PermissionInterceptor3" />
 		</mvc:interceptor>

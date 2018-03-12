@@ -38,6 +38,10 @@
 					else return false ">
 						<s:message code="table.delete" />
 					</button>
+					<button id="btnAppreciate" disabled="disabled" name="appreciate">
+						<s:message code="table.appreciate" />
+					</button>
+
 					<button id="btnExport" disabled="disabled" name="export">
 						<s:message code="table.export" />
 					</button>
@@ -108,11 +112,14 @@
 					document.getElementById('btnExport').disabled = true;
 					document.getElementById('btnDelete').disabled = true;
 					document.getElementById('btnEdit').disabled = true;
+					document.getElementById('btnAppreciate').disabled = true;
 				} else if (sl == 1) {
 					document.getElementById('btnEdit').disabled = false;
 					document.getElementById('btnExport').disabled = false;
 					document.getElementById('btnDelete').disabled = false;
+					document.getElementById('btnAppreciate').disabled = false;
 				} else {
+					document.getElementById('btnAppreciate').disabled = true;
 					document.getElementById('btnEdit').disabled = true;
 					document.getElementById('btnExport').disabled = false;
 					document.getElementById('btnDelete').disabled = false;

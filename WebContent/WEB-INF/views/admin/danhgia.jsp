@@ -81,66 +81,78 @@ tr, td {
 	<div id="right">
 		<h3>Thông tin cá nhân</h3>
 		<hr>
-		<div id="r_left">
-			<table>
-				<tr>
-					<td>Họ và tên:</td>
-					<td>${tk.name }</td>
-				</tr>
+		<form action="appreciate.htm" method="post">
+			<div id="r_left">
+				<table>
+					<tr>
+						<td>Họ và tên:</td>
+						<td>${app.name }<input type="hidden" name="us"
+							value="${app.username }">
+						</td>
+					</tr>
 
-				<tr>
-					<td>Địa chỉ</td>
-					<td>${tk.address }</td>
-				</tr>
+					<tr>
+						<td>Địa chỉ</td>
+						<td>${app.address }</td>
+					</tr>
 
-				<tr>
-					<td>Số điện thoại</td>
-					<td>${tk.phone }</td>
-				</tr>
+					<tr>
+						<td>Số điện thoại</td>
+						<td>${app.phone }</td>
+					</tr>
 
-				<tr>
-					<td>Giới tính</td>
-					<c:choose>
-						<c:when test="${tk.gender ==true }">
-							<td>Nữ</td>
-						</c:when>
-						<c:when test="${tk.gender ==false }">
-							<td>Nam</td>
-						</c:when>
-					</c:choose>
-				</tr>
+					<tr>
+						<td>Giới tính</td>
+						<c:choose>
+							<c:when test="${app.gender ==true }">
+								<td>Nữ</td>
+							</c:when>
+							<c:when test="${app.gender ==false }">
+								<td>Nam</td>
+							</c:when>
+						</c:choose>
+					</tr>
 
-				<tr>
-					<td>Ngày sinh</td>
-					<td><fmt:formatDate value="${tk.birthday }"
-							pattern="dd/MM/yyyy" /></td>
-				</tr>
+					<tr>
+						<td>Ngày sinh</td>
+						<td><fmt:formatDate value="${app.birthday }"
+								pattern="dd/MM/yyyy" /></td>
+					</tr>
 
-				<tr>
-					<td>Mức lương</td>
-					<td>${tk.salary }</td>
-				</tr>
+					<tr>
+						<td>Mức lương</td>
+						<td>${app.salary }</td>
+					</tr>
 
-				<tr>
-					<td>Email</td>
-					<td>${tk.email }</td>
-				</tr>
-				
-				<tr>
-					<td>Lý do</td>
-					<td><input type="textarea" > </td>
-				</tr>
-			</table>
+					<tr>
+						<td>Email</td>
+						<td>${app.email }</td>
+					</tr>
 
-		</div>
-		<div id="r_right">
-			<div id="img">
-				<img width="150px" src="images/${tk.photo}">
+					<tr>
+						<td>Lý do</td>
+						<td><input style="line-height: 20px; width: 200px;"
+							type="text" name="reason"></td>
+
+					</tr>
+				</table>
+				<div style="width: 300px; margin-left: 430px;">
+					<button style="width: 100px; line-height: 25px;" name="KT"
+						class="appreciate">Khen thưởng</button>
+					<button style="width: 100px; line-height: 25px;" name="KL"
+						class="appreciate">Kỷ luật</button>
+
+				</div>
 			</div>
-			<button class="appreciate">Khen thưởng</button>
-			<button class="appreciate">Kỷ luật</button>
+			<div id="r_right">
+				<div id="img">
+					<img width="150px" src="images/${app.photo}">
+				</div>
 
-		</div>
+
+
+			</div>
+		</form>
 	</div>
 </body>
 </html>

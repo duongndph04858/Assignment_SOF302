@@ -14,9 +14,12 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+
+import model.entity.RECORDS;
 import model.entity.STAFFS;
 import model.model.DEPARTS_DAO;
 import model.model.LEVELSTAFF_DAO;
+import model.model.RECORDS_DAO;
 import model.model.STAFFS_DAO;
 import model.model.USERS_DAO;
 
@@ -39,6 +42,9 @@ public class StaffController {
 
 	@Autowired
 	SessionFactory factory;
+	
+	@Autowired
+	RECORDS_DAO rec;
 
 	@RequestMapping(value = "depart/GD")
 	public String departGD(HttpSession session, ModelMap md, HttpServletRequest request) {
@@ -100,7 +106,7 @@ public class StaffController {
 
 	}
 
-	@RequestMapping(value = "/staff")
+	@RequestMapping(value = "/staff/allstaff")
 	public String getListStaff(ModelMap md, HttpServletRequest request) {
 		ArrayList<STAFFS> lstStaff = staff.getListStaffs();
 		int batdau = 0;
@@ -230,5 +236,28 @@ public class StaffController {
 		} else {
 			return "admin/notfound";
 		}
+	}
+	
+	@RequestMapping(value="staff", params="appreciate")
+	public String appreciate(HttpServletRequest request, ModelMap md) {
+		String user = request.getParameter("u");
+		md.addAttribute("app", staff.getStaff(user));
+		return "admin/danhgia";
+	}
+	
+	@RequestMapping(value="appreciate",params="KT")
+	public String inserReward(HttpServletRequest request) {
+		String reason = request.getParameter("reason");
+		String user = request.getParameter("us");
+		rec.insertRW(new RECORDS("KT", reason, new Date(), staff.getStaff(user)));
+		return "redirect:/reward.htm";		
+	}
+	
+	@RequestMapping(value="appreciate",params="KL")
+	public String inserDP(HttpServletRequest request) {
+		String reason = request.getParameter("reason");
+		String user = request.getParameter("us");
+		rec.insertRW(new RECORDS("KL", reason, new Date(), staff.getStaff(user)));
+		return "redirect:/disciplines.htm";		
 	}
 }

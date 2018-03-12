@@ -24,7 +24,7 @@ tr {
 	<div>
 		<div id="right">
 			<div id="tool">
-				<h3>Top 10 nhân viên xuất sắc nhất tháng</h3>
+				<h3>Danh sách khen thưởng</h3>
 			</div>
 			<hr>
 			<div>
@@ -41,7 +41,7 @@ tr {
 							<td>Phòng ban</td>
 							<td>Lý do khen thưởng</td>
 						</tr>
-						<c:forEach var="st" varStatus="status" items="${topstaff }">
+						<c:forEach var="st" varStatus="status" items="${kt }">
 							<tr style="border-bottom: 1px solid #000">
 								<td>${st.id }</td>
 								<td><img width="100px;" src="images/${st.staff.photo }" /></td>
